@@ -2,6 +2,10 @@
 
 var chain = 2 + 2 + 5 - 2 * 3 - 3 / 3;
 
+var dotReg = /\./;
+
+var dot = ".";
+
 
 var status = "ready";
 

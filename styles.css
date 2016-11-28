@@ -100,3 +100,15 @@ body {
 #bottomSpan {
     padding-top: 10px;
 }
+
+.circle {
+    margin-top: 25px;
+    margin-left: 10px;
+    height: 75px;
+    width: 75px;
+    color: #f7d309;
+    border-radius: 50px;
+    background: none;
+    border: solid 2.5px #f7d309;
+    font-size: 200%;
+}

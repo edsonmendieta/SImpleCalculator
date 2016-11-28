@@ -82,9 +82,14 @@ body {
 }
 
 #topP {
+    font-size: 300%;
     border-radius: 50px 50px 0 0;
 }
 
 #bottomP {
     border-radius: 0 0 50px 50px;
+}
+
+.numSpan {
+    padding-right: 20px;
 }

@@ -1,0 +1,90 @@
+
+
+/******************************************\
+                $CSS Reset
+\******************************************/
+
+/* basic elements */
+body, html, section, div, blockquote, img, label, p, h1, h2, h3, h4, h5, h6, pre, ul, ol,
+li, dl, dt, dd, form, a, fieldset, th, td
+{
+margin: 0; padding: 0; border: 0; outline: none;
+}
+
+body
+{
+line-height: 1;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+padding: .6em 0;
+margin: 0 0;
+}
+
+ul, ol
+{
+list-style: none;
+}
+
+a
+{
+color: green;
+text-decoration: none;
+}
+
+a:hover
+{
+text-decoration: none;
+color: #EBB000;
+}
+
+/******************************************\
+                $MAIN
+\******************************************/
+
+body {
+    background-color: black;
+}
+
+#outer {
+    margin: 0 auto; /* centers it. */
+    margin-top: 75px;
+    height: 600px;
+    width: 400px;
+    border: gold 1px solid;
+    border-radius: 200px;
+}
+
+#calcHeader {
+    margin-top: 20px;
+    text-align: center;
+    color: gold;
+    font-weight: normal;
+    font-size: 150%;
+    padding-bottom: 30px;
+}
+
+#display {
+    height: 100px;
+    width: 370px;
+    border-radius: 50px;
+    border: white 1px solid;
+    margin: 0 auto; /* centers it. */
+}
+
+.input {
+    height: 50px;
+    width: 370px;
+    border: gold 1px dashed;
+    text-align: right;
+    color: white;
+}
+
+#topP {
+    border-radius: 50px 50px 0 0;
+}
+
+#bottomP {
+    border-radius: 0 0 50px 50px;
+}

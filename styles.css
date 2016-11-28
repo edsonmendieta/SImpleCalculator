@@ -44,7 +44,7 @@ color: #EBB000;
 \******************************************/
 
 body {
-    background-color: black;
+    background-color: #1e1e1d;
 }
 
 #outer {
@@ -52,33 +52,34 @@ body {
     margin-top: 75px;
     height: 600px;
     width: 400px;
-    border: gold 1px solid;
+    border: #d6bc28 3px solid; /* gold color */
     border-radius: 200px;
 }
 
 #calcHeader {
     margin-top: 20px;
     text-align: center;
-    color: gold;
+    color: #f7d309;
     font-weight: normal;
-    font-size: 150%;
+    font-size: 200%;
     padding-bottom: 30px;
 }
 
 #display {
-    height: 100px;
-    width: 370px;
+    height: 75px;
+    width: 300px;
     border-radius: 50px;
-    border: white 1px solid;
+    /*border: white 1px solid;*/
     margin: 0 auto; /* centers it. */
+    background-color: #f7d309;
 }
 
 .input {
     height: 50px;
-    width: 370px;
-    border: gold 1px dashed;
+    width: 300px;
+    /*border: gold 1px dashed;*/
     text-align: right;
-    color: white;
+    color: black;
 }
 
 #topP {
@@ -87,9 +88,15 @@ body {
 }
 
 #bottomP {
+    font-size: 115%;
     border-radius: 0 0 50px 50px;
+    height: 25px;
 }
 
 .numSpan {
     padding-right: 20px;
+}
+
+#bottomSpan {
+    padding-top: 10px;
 }

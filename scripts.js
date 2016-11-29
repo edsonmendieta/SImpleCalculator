@@ -1,4 +1,7 @@
 
+var textnode = document.createTextNode('7');
+
+document.getElementById('topSpan').appendChild(textnode);
 
 var chain = 2 + 2 + 5 - 2 * 3 - 3 / 3;
 

@@ -102,6 +102,7 @@ body {
 }
 
 .circle {
+    display: inline-block;
     margin-top: 25px;
     margin-left: 10px;
     height: 75px;

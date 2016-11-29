@@ -49,15 +49,14 @@ body {
 
 #outer {
     margin: 0 auto; /* centers it. */
-    margin-top: 75px;
-    height: 730px;
+    margin-top: 10px;
+    height: 625px;
     width: 400px;
     border: #d6bc28 3px solid; /* gold color */
-    border-radius: 200px;
+    border-radius: 100px;
 }
 
 #calcHeader {
-    margin-top: 20px;
     text-align: center;
     color: #f7d309;
     font-weight: normal;
@@ -112,7 +111,7 @@ button:focus {
 
 .circle {
     /*display: flex;*/
-    margin-top: 25px;
+    margin-top: 15px;
     /*margin-left: 10px;*/
     height: 75px;
     width: 75px;

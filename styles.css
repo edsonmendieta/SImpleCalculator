@@ -50,7 +50,7 @@ body {
 #outer {
     margin: 0 auto; /* centers it. */
     margin-top: 75px;
-    height: 600px;
+    height: 730px;
     width: 400px;
     border: #d6bc28 3px solid; /* gold color */
     border-radius: 200px;
@@ -101,10 +101,19 @@ body {
     padding-top: 10px;
 }
 
+.circleRow {
+    display: flex;
+    justify-content: space-around;
+}
+
+button:focus {
+    outline: 0;
+}
+
 .circle {
-    display: inline-block;
+    /*display: flex;*/
     margin-top: 25px;
-    margin-left: 10px;
+    /*margin-left: 10px;*/
     height: 75px;
     width: 75px;
     color: #f7d309;
@@ -112,4 +121,23 @@ body {
     background: none;
     border: solid 2.5px #f7d309;
     font-size: 200%;
+}
+
+.circle:hover {
+    color: #1e1e1d;
+    background-color: #f7d309;
+    cursor: pointer;
+}
+
+#lastRow {
+    justify-content: center;
+}
+
+#dot {
+    margin-right: 10px;
+}
+
+#equals {
+    width: 200px;
+    margin-left: 10px;
 }

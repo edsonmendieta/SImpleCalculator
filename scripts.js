@@ -40,8 +40,16 @@ for (var i = 0; i < oneNine.length; i++) {
         var topOp = "no";
 
         var textNode = document.createTextNode(this.innerHTML);
+
+        var textNode2 = document.createTextNode(this.innerHTML);
         //-----------------------------------------------------
 
+        // pushes # to 'empty' array
+        empty.push(this.innerHTML);
+
+        // TOP-DISPLAY FUNCTIONALITY---------------------------
+
+        // checks for op in top-display
         for (var e = 0; e < ops.length; e++) {
 
             if(ops[e] == document.getElementById('topSpan').innerHTML) {
@@ -49,10 +57,6 @@ for (var i = 0; i < oneNine.length; i++) {
                 topOp = "yes";
             }
         }
-        //-------------------------------------------------------
-
-        // pushes # to 'empty' array
-        empty.push(this.innerHTML);
 
         // CLEARS and ADDS # to top-display IF OP NOT in top-display
         if (topOp == 'yes') {
@@ -66,6 +70,14 @@ for (var i = 0; i < oneNine.length; i++) {
             // adds # to top-display
             document.getElementById('topSpan').appendChild(textNode);
         }
+        //-----------------------------------------------------------
+
+        // BOTTOM-DISPLAY FUNCTIONALITY -----------------------------
+
+        // adds # to bottom-display
+        document.getElementById('bottomSpan').appendChild(textNode2);
+
+        //-----------------------------------------------------------
 
     }); // END OF CURRENT ELEMENT EVENT LISTENER FUNCTION
 

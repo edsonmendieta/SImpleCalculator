@@ -1,19 +1,43 @@
+window.onload = function() {
+  //do work
 
-var textnode = document.createTextNode('7');
+
+
+// TOP Numbers-----------------------------------------------
+var theNode = '8';
+
+var textnode = document.createTextNode(theNode);
 
 document.getElementById('topSpan').appendChild(textnode);
+//------------------------------------------------------------
+
+                     // NUMBERS 1 - 9
+
+var oneNine = document.getElementsByClassName('nonZero');
+
+// ATTACHES EVENT LISTENER TO EACH NUMBER
+for (var i = 0; i < oneNine.length; i++) {
+
+    oneNine[i].addEventListener('click', function() {
+
+        //WHEN BUTTON IS CLICKED...
+        
+    });
+}
+
+//---------------------------------------------------------------------------
 
 var chain = 2 + 2 + 5 - 2 * 3 - 3 / 3;
 
 var dotReg = /\./;
 
-var dot = ".";
+var dot = '.';
 
 
-var status = "ready";
+var status = 'ready';
 
 
-var calc = [2, "add", 2, "add", 5, "minus", 2, "times", 3, "minus", 3, "divide", 3];
+var calc = [2, "add", 2, "add", 5, "minus", 2, "times", 3, "minus", 3, "divide",  3];
 
 var operations = {
 
@@ -74,3 +98,10 @@ else if (calc.length > 3) {
 }
 
 console.log(calc);
+
+
+
+
+
+
+};

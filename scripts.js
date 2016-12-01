@@ -9,15 +9,23 @@ var empty = [];
 //totals
 var calc = [];
 
-//REFERENCE VARIABLES
+//-------------------------------------------------------------------
+
+//REFERENCE VARIABLES -----------------------------------------------
 
 // includes divide symbol after 'TOP Numbers' code.
 var ops = ["+", "-", "*"];
 
+var dot = '.';
+
+var dotReg = /\./;
+
+//------------------------------------------------------------------
+
 // TOP Numbers-----------------------------------------------
 var theNode = document.getElementById('divide').innerHTML;
 
-    // adds divide symbol to 'ops' array
+// adds divide symbol to 'ops' array
 ops.push(theNode);
 
 // var textnode = document.createTextNode(theNode);
@@ -83,13 +91,28 @@ for (var i = 0; i < oneNine.length; i++) {
 
 } // END OF EVENT LISTENER ATTACHING LOOP
 
-//---------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+
+                    // '.' BUTTON
+
+//ATTACHES EVENT LISTENER '.'
+document.getElementById('dot').addEventListener('click', function() {
+
+    //WHEN BUTTON IS CLICKED...
+
+    // if dot NOT in 'empty' array...
+    if (empty.join('').match(dotReg) === null) {
+
+        // pushes dot to 'empty' array
+        empty.push(dot);
+
+        //**************
+    }
+
+});
+//-------------------------------------------------------------------------
 
 var chain = 2 + 2 + 5 - 2 * 3 - 3 / 3;
-
-var dotReg = /\./;
-
-var dot = '.';
 
 
 var status = 'ready';

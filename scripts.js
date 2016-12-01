@@ -1,10 +1,20 @@
 window.onload = function() {
   //do work
 
+// GLOBAL ARRAYS ----------------------------------------------------
 
+//individuals
+var empty = [];
+
+//totals
+var calc = [];
+
+//REFERENCE VARIABLES
+
+var ops = ["+", "-", "*"];
 
 // TOP Numbers-----------------------------------------------
-var theNode = '8';
+var theNode = '+';
 
 var textnode = document.createTextNode(theNode);
 
@@ -15,15 +25,47 @@ document.getElementById('topSpan').appendChild(textnode);
 
 var oneNine = document.getElementsByClassName('nonZero');
 
-// ATTACHES EVENT LISTENER TO EACH NUMBER
+//ATTACHES EVENT LISTENER TO EACH NUMBER
 for (var i = 0; i < oneNine.length; i++) {
 
     oneNine[i].addEventListener('click', function() {
 
         //WHEN BUTTON IS CLICKED...
-        
-    });
-}
+
+        //variables ------------------------------------------
+        var topOp = "no";
+
+        var textNode = document.createTextNode(this.innerHTML);
+        //-----------------------------------------------------
+
+        for (var e = 0; e < ops.length; e++) {
+
+            if(ops[e] == document.getElementById('topSpan').innerHTML) {
+
+                topOp = "yes";
+            }
+        }
+        //-------------------------------------------------------
+
+        // pushes # to 'empty' array
+        empty.push(this.innerHTML);
+
+        // adds # to top-display
+        if (topOp == 'yes') {
+            // clears top-display
+            document.getElementById('topSpan').innerHTML = '';
+            // adds # to top-display
+            document.getElementById('topSpan').appendChild(textNode);
+        }
+
+        else {
+            // adds # to top-display
+            document.getElementById('topSpan').appendChild(textNode);
+        }
+
+    }); // END OF CURRENT ELEMENT EVENT LISTENER FUNCTION
+
+} // END OF EVENT LISTENER ATTACHING LOOP
 
 //---------------------------------------------------------------------------
 
@@ -37,7 +79,7 @@ var dot = '.';
 var status = 'ready';
 
 
-var calc = [2, "add", 2, "add", 5, "minus", 2, "times", 3, "minus", 3, "divide",  3];
+// var calc = [2, "add", 2, "add", 5, "minus", 2, "times", 3, "minus", 3, "divide",  3];
 
 var operations = {
 

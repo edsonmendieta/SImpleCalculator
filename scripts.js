@@ -11,14 +11,18 @@ var calc = [];
 
 //REFERENCE VARIABLES
 
+// includes divide symbol after 'TOP Numbers' code.
 var ops = ["+", "-", "*"];
 
 // TOP Numbers-----------------------------------------------
-var theNode = '+';
+var theNode = document.getElementById('divide').innerHTML;
 
-var textnode = document.createTextNode(theNode);
+    // adds divide symbol to 'ops' array
+ops.push(theNode);
 
-document.getElementById('topSpan').appendChild(textnode);
+// var textnode = document.createTextNode(theNode);
+//
+// document.getElementById('topSpan').appendChild(textnode);4
 //------------------------------------------------------------
 
                      // NUMBERS 1 - 9
@@ -50,7 +54,7 @@ for (var i = 0; i < oneNine.length; i++) {
         // pushes # to 'empty' array
         empty.push(this.innerHTML);
 
-        // adds # to top-display
+        // CLEARS and ADDS # to top-display IF OP NOT in top-display
         if (topOp == 'yes') {
             // clears top-display
             document.getElementById('topSpan').innerHTML = '';

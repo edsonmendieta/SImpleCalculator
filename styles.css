@@ -47,6 +47,10 @@ body {
     background-color: #1e1e1d;
 }
 
+#divide {
+    display: none;
+}
+
 #outer {
     margin: 0 auto; /* centers it. */
     margin-top: 10px;

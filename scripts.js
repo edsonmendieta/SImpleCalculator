@@ -225,10 +225,12 @@ for (var r = 0; r < opButtons.length; r++) {
             var textNode = document.createTextNode(this.innerHTML);
 
             var textNode2 = document.createTextNode(this.innerHTML);
+
+            var bottom = document.getElementById('bottomSpan');
         //-----------------------------------------------------
 
             // checks for valid number in 'empty' array
-            if (empty.length > 1 || empty.length == 1 && empty[0] !== dot) {
+            if (empty.length > 1 || empty.length == 1 && empty[0] !== dot || (empty.length === 0 && bottom.innerHTML.length > 0)) {
 
                 // pushes number currently in top-display to 'calc' array
                 calc.push(Number(empty.join('')));
@@ -297,14 +299,16 @@ var zeroButton = document.getElementById('zero').addEventListener('click', funct
 
     // WHEN BUTTON IS CLICKED...
 
-    //variables ------------------------------------------
+    //variables ---------------------------------------------
 
     var textNode = document.createTextNode(this.innerHTML);
 
     var textNode2 = document.createTextNode(this.innerHTML);
-    //-----------------------------------------------------
 
-    if (empty.length > 0) {
+    var bottom = document.getElementById('bottomSpan');
+    //-------------------------------------------------------
+
+    if (empty.length > 0 || (empty.length === 0 && bottom.innerHTML.length > 0)) {
 
         // DIGIT LIMIT --------------------------------------
         if (document.getElementById('topSpan').innerHTML.length >= 10 || document.getElementById('bottomSpan').innerHTML.length >= 28) {
@@ -351,132 +355,134 @@ document.getElementById('equals').addEventListener('click', function() {
 
     // BUTTON IS CLICKED...
 
-    var bottomP = document.getElementById('bottomSpan').innerHTML;
 
-    var opStatus = "no";
+        var bottomP = document.getElementById('bottomSpan').innerHTML;
 
-    //checking if 'bottomP' ends with an operator ------------
-    for (var t = 0; t < ops.length; t++) {
+        var opStatus = "no";
 
-        if(bottomP[bottomP.length - 1] == ops[t]) {
+        //checking if 'bottomP' ends with an operator ------------
+        for (var t = 0; t < ops.length; t++) {
 
-            opStatus = "yes";
-        }
-    }
-    //---------------------------------------------------------
+            if(bottomP[bottomP.length - 1] == ops[t]) {
 
-    // IF bottomP doesn't end with operator, and has no equals symbol...
-    if(opStatus == "no" &&
-    document.getElementById('bottomSpan').innerHTML.match('=') === null) {
-
-        calc.push(Number(empty.join('')));
-
-        console.log(empty);
-
-        // VARIABLES -------------------------------------------
-
-        var textNode = document.createTextNode(this.innerHTML);
-
-        var total = [];
-
-        var status = 'ready';
-
-        //------------------------------------------------------
-    empty = [];
-
-        // REFERENCE OBJECT ------------------------------------
-
-        var operations = {
-
-            add: function(a, b) {
-                return a + b;
-            },
-
-            minus: function(a, b) {
-                return a - b;
-            },
-
-            times: function(a, b) {
-                return a * b;
-            },
-
-            divide: function(a, b) {
-                return a / b;
+                opStatus = "yes";
             }
         }
-        //-----------------------------------------------------
+        //---------------------------------------------------------
+
+        // IF bottomP doesn't end with operator, and has no equals symbol...
+        if(opStatus == "no" &&
+        document.getElementById('bottomSpan').innerHTML.match('=') === null) {
+
+            calc.push(Number(empty.join('')));
+
+            console.log(empty);
+
+            // VARIABLES -------------------------------------------
+
+            var textNode = document.createTextNode(this.innerHTML);
+
+            var total = [];
+
+            var status = 'ready';
+
+            //------------------------------------------------------
+        empty = [];
+
+            // REFERENCE OBJECT ------------------------------------
+
+            var operations = {
+
+                add: function(a, b) {
+                    return a + b;
+                },
+
+                minus: function(a, b) {
+                    return a - b;
+                },
+
+                times: function(a, b) {
+                    return a * b;
+                },
+
+                divide: function(a, b) {
+                    return a / b;
+                }
+            }
+            //-----------------------------------------------------
 
 
-        // 'COMPUTE' FUNCTION -------------------------------------------
+            // 'COMPUTE' FUNCTION -------------------------------------------
 
-        function compute(num1, operator, num2) { // computes 2 numbers
+            function compute(num1, operator, num2) { // computes 2 numbers
 
-            // status = "no";
+                // status = "no";
 
-            // REMOVES operator & both numbers used
-            calc.shift(calc[0]);
-            calc.shift(calc[1]);
-            calc.shift(calc[2]);
+                // REMOVES operator & both numbers used
+                calc.shift(calc[0]);
+                calc.shift(calc[1]);
+                calc.shift(calc[2]);
 
-            // ADDS result to FRONT of "calc" array
-            calc.unshift(operations[operator](num1, num2));
+                // ADDS result to FRONT of "calc" array
+                calc.unshift(operations[operator](num1, num2));
 
-            // status = "ready";
-        }
-        //--------------------------------------------------------------
+                // status = "ready";
+            }
+            //--------------------------------------------------------------
 
-        if (calc.length == 3) {
+            if (calc.length == 3) {
+
+                // FINAL TOTAL
+                total.push((operations[calc[1]](calc[0], calc[2])));
+            }
+
+
+            else if (calc.length > 3) {
+
+                while (calc.length > 1) {
+
+                    // if (status == "ready") {
+
+                        // PASSES two numbers & operator to be computed
+                        compute(calc[0], calc[1], calc[2]);
+                    // }
+                }
+            }
 
             // FINAL TOTAL
-            total.push((operations[calc[1]](calc[0], calc[2])));
+            total.push(calc);
+
+            // TOP-DISPLAY FUNCTIONALITY -----------------------------
+
+            var totalNode = document.createTextNode(total[0]);
+            var totalNode2 = document.createTextNode(total[0]);
+
+            // clears top-display
+            document.getElementById('topSpan').innerHTML = '';
+            // adds total to top-display
+            document.getElementById('topSpan').appendChild(totalNode);
+
+            //-----------------------------------------------------------
+
+            // BOTTOM-DISPLAY FUNCTIONALITY -----------------------------
+
+            // adds equals symbol & total to bottom-display
+            document.getElementById('bottomSpan').appendChild(textNode);
+            document.getElementById('bottomSpan').appendChild(totalNode2);
+
+            //-----------------------------------------------------------
+
+            console.log(empty);
+            empty = [];
+            console.log(empty);
+            empty.push(total[0]);
+            console.log(empty);
+            console.log(calc);
+            calc = [];
+            console.log(calc);
+
         }
 
-
-        else if (calc.length > 3) {
-
-            while (calc.length > 1) {
-
-                // if (status == "ready") {
-
-                    // PASSES two numbers & operator to be computed
-                    compute(calc[0], calc[1], calc[2]);
-                // }
-            }
-        }
-
-        // FINAL TOTAL
-        total.push(calc);
-
-        // TOP-DISPLAY FUNCTIONALITY -----------------------------
-
-        var totalNode = document.createTextNode(total[0]);
-        var totalNode2 = document.createTextNode(total[0]);
-
-        // clears top-display
-        document.getElementById('topSpan').innerHTML = '';
-        // adds total to top-display
-        document.getElementById('topSpan').appendChild(totalNode);
-
-        //-----------------------------------------------------------
-
-        // BOTTOM-DISPLAY FUNCTIONALITY -----------------------------
-
-        // adds equals symbol & total to bottom-display
-        document.getElementById('bottomSpan').appendChild(textNode);
-        document.getElementById('bottomSpan').appendChild(totalNode2);
-
-        //-----------------------------------------------------------
-
-        console.log(empty);
-        empty = [];
-        console.log(empty);
-        empty.push(total[0]);
-        console.log(empty);
-        console.log(calc);
-        calc = [];
-        console.log(calc);
-
-    }
 
 }); // END OF 'CLICK' FUNCTIONALITY
 
@@ -484,6 +490,68 @@ document.getElementById('equals').addEventListener('click', function() {
 
 
 //-------------------------------------------------------------------------
+
+
+
+                    // CE BUTTON
+
+document.getElementById('CE').addEventListener('click', function() {
+
+    // WHEN BUTTON IS CLICKED...
+
+    // variables ----------------------------------
+
+    var top = document.getElementById('topSpan');
+
+    var bottom = document.getElementById('bottomSpan');
+
+    var opStatus = "no";
+
+    //---------------------------------------------
+
+    // Checks for OP in top-display -------------------
+
+    for (var i = 0; i < ops.length; i++) {
+
+        if (top.innerHTML[0] == ops[i]) {
+
+            opStatus = "yes";
+        }
+    }
+
+    //-------------------------------------------------
+
+    if (bottom.innerHTML == 'Digit Limit Met') {
+
+        bottom.innerHTML = '';
+    }
+
+    else if (bottom.innerHTML.match('=') !== null) {
+
+        top.innerHTML = '';
+        bottom.innerHTML = '';
+
+        empty = [];
+        calc = [];
+    }
+
+    else if (empty.length > 0 || opStatus == "yes") {
+
+        if (top.innerHTML.length > 0) {
+
+            top.removeChild(top.childNodes[top.childNodes.length - 1]);
+        }
+
+        bottom.removeChild(bottom.childNodes[bottom.childNodes.length - 1]);
+    }
+
+}); // END of 'CLICK' functionality
+
+
+
+
+
+
 
 
 

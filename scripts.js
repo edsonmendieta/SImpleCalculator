@@ -149,7 +149,7 @@ document.getElementById('dot').addEventListener('click', function() {
 
     } // ENDS "if dot NOT in 'empty' array" CONDITIONAL
 
-});
+}); // END of 'click' FUNCTIONALITY
 //-------------------------------------------------------------------------
 
 
@@ -212,6 +212,7 @@ for (var r = 0; r < opButtons.length; r++) {
 
             //-----------------------------------------------------------
 
+            // empties 'empty' array for next input's use
             empty = [];
 
         } // END OF 'if "empty" is NOT empty' FUNCTIONALITY
@@ -219,6 +220,44 @@ for (var r = 0; r < opButtons.length; r++) {
     }); // ENDS CLICK FUNCTIONALITY
 
 } // END OF EVENT LISTENER ATTACHING LOOP
+
+
+                    // ZERO BUTTON
+
+//ATTACHES EVENT LISTENER to ZERO BUTTON
+var zeroButton = document.getElementById('zero').addEventListener('click', function() {
+
+    // WHEN BUTTON IS CLICKED...
+
+    //variables ------------------------------------------
+
+    var textNode = document.createTextNode(this.innerHTML);
+
+    var textNode2 = document.createTextNode(this.innerHTML);
+    //-----------------------------------------------------
+
+    if (empty.length > 0) {
+
+        // pushes Zero to 'empty' array
+        empty.push(this.innerHTML);
+
+        // TOP-DISPLAY FUNCTIONALITY -----------------------------
+
+        // adds Zero to top-display
+        document.getElementById('topSpan').appendChild(textNode);
+
+        //-----------------------------------------------------------
+
+        // BOTTOM-DISPLAY FUNCTIONALITY -----------------------------
+
+        // adds Zero to bottom-display
+        document.getElementById('bottomSpan').appendChild(textNode2);
+
+        //-----------------------------------------------------------
+
+    } // END of 'if "empty" array is not empty' FUNCTIONALITY
+
+}); // END OF 'CLICK' FUNCTIONALITY
 
 
 var chain = 2 + 2 + 5 - 2 * 3 - 3 / 3;

@@ -45,49 +45,69 @@ for (var i = 0; i < oneNine.length; i++) {
 
         //WHEN BUTTON IS CLICKED...
 
-        //variables ------------------------------------------
-        var topOp = "no";
+        // DIGIT LIMIT --------------------------------------
+        if (document.getElementById('topSpan').innerHTML.length >= 10 || document.getElementById('bottomSpan').innerHTML.length >= 28) {
 
-        var textNode = document.createTextNode(this.innerHTML);
-
-        var textNode2 = document.createTextNode(this.innerHTML);
-        //-----------------------------------------------------
-
-        // pushes # to 'empty' array
-        empty.push(this.innerHTML);
-
-        // TOP-DISPLAY FUNCTIONALITY---------------------------
-
-        // checks for op in top-display
-        for (var e = 0; e < ops.length; e++) {
-
-            if(ops[e] == document.getElementById('topSpan').innerHTML) {
-
-                topOp = "yes";
-            }
-        }
-
-        // CLEARS and ADDS # to top-display IF OP in top-display
-        if (topOp == 'yes') {
-            // clears top-display
             document.getElementById('topSpan').innerHTML = '';
-            // adds # to top-display
-            document.getElementById('topSpan').appendChild(textNode);
+
+            document.getElementById('bottomSpan').innerHTML = 'Digit Limit Met';
+
+            empty = [];
+            calc = [];
+
         }
+        //---------------------------------------------------
 
-        else {
-            // adds # to top-display
-            document.getElementById('topSpan').appendChild(textNode);
+        else{
+
+            if (document.getElementById('bottomSpan').innerHTML == 'Digit Limit Met') {
+
+                document.getElementById('bottomSpan').innerHTML = '';
+            }
+
+            //variables ------------------------------------------
+            var topOp = "no";
+
+            var textNode = document.createTextNode(this.innerHTML);
+
+            var textNode2 = document.createTextNode(this.innerHTML);
+            //-----------------------------------------------------
+
+            // pushes # to 'empty' array
+            empty.push(this.innerHTML);
+
+            // TOP-DISPLAY FUNCTIONALITY---------------------------
+
+            // checks for op in top-display
+            for (var e = 0; e < ops.length; e++) {
+
+                if(ops[e] == document.getElementById('topSpan').innerHTML) {
+
+                    topOp = "yes";
+                }
+            }
+
+            // CLEARS and ADDS # to top-display IF OP in top-display
+            if (topOp == 'yes') {
+                // clears top-display
+                document.getElementById('topSpan').innerHTML = '';
+                // adds # to top-display
+                document.getElementById('topSpan').appendChild(textNode);
+            }
+
+            else {
+                // adds # to top-display
+                document.getElementById('topSpan').appendChild(textNode);
+            }
+            //-----------------------------------------------------------
+
+            // BOTTOM-DISPLAY FUNCTIONALITY -----------------------------
+
+            // adds # to bottom-display
+            document.getElementById('bottomSpan').appendChild(textNode2);
+
+            //-----------------------------------------------------------
         }
-        //-----------------------------------------------------------
-
-        // BOTTOM-DISPLAY FUNCTIONALITY -----------------------------
-
-        // adds # to bottom-display
-        document.getElementById('bottomSpan').appendChild(textNode2);
-
-        //-----------------------------------------------------------
-
     }); // END OF CURRENT ELEMENT EVENT LISTENER FUNCTION
 
 } // END OF EVENT LISTENER ATTACHING LOOP
@@ -101,54 +121,74 @@ document.getElementById('dot').addEventListener('click', function() {
 
     //WHEN BUTTON IS CLICKED...
 
-    //variables ------------------------------------------
-    var topOp = "no";
+    // DIGIT LIMIT --------------------------------------
+    if (document.getElementById('topSpan').innerHTML.length >= 10 || document.getElementById('bottomSpan').innerHTML.length >= 28) {
 
-    var textNode = document.createTextNode(this.innerHTML);
+        document.getElementById('topSpan').innerHTML = '';
 
-    var textNode2 = document.createTextNode(this.innerHTML);
-    //-----------------------------------------------------
+        document.getElementById('bottomSpan').innerHTML = 'Digit Limit Met';
 
-    // TOP-DISPLAY FUNCTIONALITY---------------------------
+        empty = [];
+        calc = [];
 
-    // checks for op in top-display
-    for (var u = 0; u < ops.length; u++) {
-
-        if(ops[u] == document.getElementById('topSpan').innerHTML) {
-
-            topOp = "yes";
-        }
     }
+    //---------------------------------------------------
 
-    // if dot NOT in 'empty' array...
-    if (empty.join('').match(dotReg) === null) {
+    else{
 
-        // pushes dot to 'empty' array
-        empty.push(dot);
+        if (document.getElementById('bottomSpan').innerHTML == 'Digit Limit Met') {
 
-        // CLEARS and ADDS dot to top-display IF OP in top-display
-        if (topOp == 'yes') {
-            // clears top-display
-            document.getElementById('topSpan').innerHTML = '';
-            // adds dot to top-display
-            document.getElementById('topSpan').appendChild(textNode);
+            document.getElementById('bottomSpan').innerHTML = '';
         }
 
-        else {
-            // adds dot to top-display
-            document.getElementById('topSpan').appendChild(textNode);
+        //variables ------------------------------------------
+        var topOp = "no";
+
+        var textNode = document.createTextNode(this.innerHTML);
+
+        var textNode2 = document.createTextNode(this.innerHTML);
+        //-----------------------------------------------------
+
+        // TOP-DISPLAY FUNCTIONALITY---------------------------
+
+        // checks for op in top-display
+        for (var u = 0; u < ops.length; u++) {
+
+            if(ops[u] == document.getElementById('topSpan').innerHTML) {
+
+                topOp = "yes";
+            }
         }
-        //-------------------------------------------------------
 
-        // BOTTOM-DISPLAY FUNCTIONALITY -----------------------------
+        // if dot NOT in 'empty' array...
+        if (empty.join('').match(dotReg) === null) {
 
-        // adds # to bottom-display
-        document.getElementById('bottomSpan').appendChild(textNode2);
+            // pushes dot to 'empty' array
+            empty.push(dot);
 
-        //-----------------------------------------------------------
+            // CLEARS and ADDS dot to top-display IF OP in top-display
+            if (topOp == 'yes') {
+                // clears top-display
+                document.getElementById('topSpan').innerHTML = '';
+                // adds dot to top-display
+                document.getElementById('topSpan').appendChild(textNode);
+            }
 
-    } // ENDS "if dot NOT in 'empty' array" CONDITIONAL
+            else {
+                // adds dot to top-display
+                document.getElementById('topSpan').appendChild(textNode);
+            }
+            //-------------------------------------------------------
 
+            // BOTTOM-DISPLAY FUNCTIONALITY -----------------------------
+
+            // adds # to bottom-display
+            document.getElementById('bottomSpan').appendChild(textNode2);
+
+            //-----------------------------------------------------------
+
+        } // ENDS "if dot NOT in 'empty' array" CONDITIONAL
+    }
 }); // END of 'click' FUNCTIONALITY
 //-------------------------------------------------------------------------
 
@@ -165,71 +205,86 @@ for (var r = 0; r < opButtons.length; r++) {
 
         //WHEN BUTTON IS CLICKED...
 
-        //variables ------------------------------------------
 
-        var textNode = document.createTextNode(this.innerHTML);
+        // DIGIT LIMIT --------------------------------------
+        if (document.getElementById('bottomSpan').innerHTML.length >= 28) {
 
-        var textNode2 = document.createTextNode(this.innerHTML);
+            document.getElementById('topSpan').innerHTML = '';
+
+            document.getElementById('bottomSpan').innerHTML = 'Digit Limit Met';
+
+            empty = [];
+            calc = [];
+
+        }
+        //---------------------------------------------------
+
+        else {
+            //variables ------------------------------------------
+
+            var textNode = document.createTextNode(this.innerHTML);
+
+            var textNode2 = document.createTextNode(this.innerHTML);
         //-----------------------------------------------------
 
-        // checks for valid number in 'empty' array
-        if (empty.length > 1 || empty.length == 1 && empty[0] !== dot) {
+            // checks for valid number in 'empty' array
+            if (empty.length > 1 || empty.length == 1 && empty[0] !== dot) {
 
-            // pushes number currently in top-display to 'calc' array
-            calc.push(Number(empty.join('')));
+                // pushes number currently in top-display to 'calc' array
+                calc.push(Number(empty.join('')));
 
-            // pushes correct OP symbol to 'calc' array
-            switch(this.innerHTML) {
+                // pushes correct OP symbol to 'calc' array
+                switch(this.innerHTML) {
 
-                case '+':
-                    calc.push('add');
-                    break;
-                case '-':
-                    calc.push('minus');
-                    break;
-                case 'x':
-                    calc.push('times');
-                    break;
-                case theNode:
-                    calc.push('divide');
-            };
+                    case '+':
+                        calc.push('add');
+                        break;
+                    case '-':
+                        calc.push('minus');
+                        break;
+                    case 'x':
+                        calc.push('times');
+                        break;
+                    case theNode:
+                        calc.push('divide');
+                };
 
-            // TOP-DISPLAY FUNCTIONALITY -----------------------------
+                // TOP-DISPLAY FUNCTIONALITY -----------------------------
 
-            // adds OP to top-display
+                // adds OP to top-display
 
-            // clears top-display
-            document.getElementById('topSpan').innerHTML = '';
-            // adds OP to top-display
-            document.getElementById('topSpan').appendChild(textNode);
+                // clears top-display
+                document.getElementById('topSpan').innerHTML = '';
+                // adds OP to top-display
+                document.getElementById('topSpan').appendChild(textNode);
 
-            //-----------------------------------------------------------
+                //-----------------------------------------------------------
 
-            // BOTTOM-DISPLAY FUNCTIONALITY -----------------------------
+                // BOTTOM-DISPLAY FUNCTIONALITY -----------------------------
 
-            // Checks for EQUALS symbol
-            if (document.getElementById('bottomSpan').innerHTML.match('=') !== null) {
+                // Checks for EQUALS symbol
+                if (document.getElementById('bottomSpan').innerHTML.match('=') !== null) {
 
-                var totalNode = document.createTextNode(empty);
+                    var totalNode = document.createTextNode(empty);
 
-                document.getElementById('bottomSpan').innerHTML = '';
+                    document.getElementById('bottomSpan').innerHTML = '';
 
-                document.getElementById('bottomSpan').appendChild(totalNode);
+                    document.getElementById('bottomSpan').appendChild(totalNode);
+                    document.getElementById('bottomSpan').appendChild(textNode2);
+                }
+
+                else {
+                // adds OP to bottom-display
                 document.getElementById('bottomSpan').appendChild(textNode2);
-            }
+                }
 
-            else {
-            // adds OP to bottom-display
-            document.getElementById('bottomSpan').appendChild(textNode2);
-            }
+                //-----------------------------------------------------------
 
-            //-----------------------------------------------------------
+                // empties 'empty' array for next input's use
+                empty = [];
 
-            // empties 'empty' array for next input's use
-            empty = [];
-
-        } // END OF 'if "empty" is NOT empty' FUNCTIONALITY
-
+            } // END OF 'if "empty" is NOT empty' FUNCTIONALITY
+        } // END of 'else'
     }); // ENDS CLICK FUNCTIONALITY
 
 } // END OF EVENT LISTENER ATTACHING LOOP
@@ -251,23 +306,38 @@ var zeroButton = document.getElementById('zero').addEventListener('click', funct
 
     if (empty.length > 0) {
 
-        // pushes Zero to 'empty' array
-        empty.push(this.innerHTML);
+        // DIGIT LIMIT --------------------------------------
+        if (document.getElementById('topSpan').innerHTML.length >= 10 || document.getElementById('bottomSpan').innerHTML.length >= 28) {
 
-        // TOP-DISPLAY FUNCTIONALITY -----------------------------
+            document.getElementById('topSpan').innerHTML = '';
 
-        // adds Zero to top-display
-        document.getElementById('topSpan').appendChild(textNode);
+            document.getElementById('bottomSpan').innerHTML = 'Digit Limit Met';
 
-        //-----------------------------------------------------------
+            empty = [];
+            calc = [];
 
-        // BOTTOM-DISPLAY FUNCTIONALITY -----------------------------
+        }
+        //---------------------------------------------------
 
-        // adds Zero to bottom-display
-        document.getElementById('bottomSpan').appendChild(textNode2);
+        else {
 
-        //-----------------------------------------------------------
+            // pushes Zero to 'empty' array
+            empty.push(this.innerHTML);
 
+            // TOP-DISPLAY FUNCTIONALITY -----------------------------
+
+            // adds Zero to top-display
+            document.getElementById('topSpan').appendChild(textNode);
+
+            //-----------------------------------------------------------
+
+            // BOTTOM-DISPLAY FUNCTIONALITY -----------------------------
+
+            // adds Zero to bottom-display
+            document.getElementById('bottomSpan').appendChild(textNode2);
+
+            //-----------------------------------------------------------
+        } // Ends 'else'
     } // END of 'if "empty" array is not empty' FUNCTIONALITY
 
 }); // END OF 'CLICK' FUNCTIONALITY
@@ -295,6 +365,7 @@ document.getElementById('equals').addEventListener('click', function() {
     }
     //---------------------------------------------------------
 
+    // IF bottomP doesn't end with operator, and has no equals symbol...
     if(opStatus == "no" &&
     document.getElementById('bottomSpan').innerHTML.match('=') === null) {
 

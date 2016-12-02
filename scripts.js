@@ -158,7 +158,7 @@ document.getElementById('dot').addEventListener('click', function() {
 //ATTACHES EVENT LISTENER OP BUTTONS
 var opButtons = document.getElementsByClassName('operator');
 
-//ATTACHES EVENT LISTENER TO EACH NUMBER
+//ATTACHES EVENT LISTENER TO EACH OP BUTTON
 for (var r = 0; r < opButtons.length; r++) {
 
     opButtons[r].addEventListener('click', function() {
@@ -207,8 +207,21 @@ for (var r = 0; r < opButtons.length; r++) {
 
             // BOTTOM-DISPLAY FUNCTIONALITY -----------------------------
 
+            // Checks for EQUALS symbol
+            if (document.getElementById('bottomSpan').innerHTML.match('=') !== null) {
+
+                var totalNode = document.createTextNode(empty);
+
+                document.getElementById('bottomSpan').innerHTML = '';
+
+                document.getElementById('bottomSpan').appendChild(totalNode);
+                document.getElementById('bottomSpan').appendChild(textNode2);
+            }
+
+            else {
             // adds OP to bottom-display
             document.getElementById('bottomSpan').appendChild(textNode2);
+            }
 
             //-----------------------------------------------------------
 
@@ -220,7 +233,7 @@ for (var r = 0; r < opButtons.length; r++) {
     }); // ENDS CLICK FUNCTIONALITY
 
 } // END OF EVENT LISTENER ATTACHING LOOP
-
+//-----------------------------------------------------------------------
 
                     // ZERO BUTTON
 
@@ -258,6 +271,134 @@ var zeroButton = document.getElementById('zero').addEventListener('click', funct
     } // END of 'if "empty" array is not empty' FUNCTIONALITY
 
 }); // END OF 'CLICK' FUNCTIONALITY
+//------------------------------------------------------------------------
+
+
+                    // EQUALS BUTTON
+
+//ATTACHES EVENT LISTENER to EQUALS BUTTON
+document.getElementById('equals').addEventListener('click', function() {
+
+    // BUTTON IS CLICKED...
+
+    calc.push(Number(empty.join('')));
+
+    console.log(empty);
+
+    // VARIABLES -------------------------------------------
+
+    var textNode = document.createTextNode(this.innerHTML);
+
+    var total = [];
+
+    var status = 'ready';
+
+    //------------------------------------------------------
+empty = [];
+
+    // REFERENCE OBJECT ------------------------------------
+
+    var operations = {
+
+        add: function(a, b) {
+            return a + b;
+        },
+
+        minus: function(a, b) {
+            return a - b;
+        },
+
+        times: function(a, b) {
+            return a * b;
+        },
+
+        divide: function(a, b) {
+            return a / b;
+        }
+    }
+    //-----------------------------------------------------
+
+
+    // 'COMPUTE' FUNCTION -------------------------------------------
+
+    function compute(num1, operator, num2) { // computes 2 numbers
+
+        // status = "no";
+
+        // REMOVES operator & both numbers used
+        calc.shift(calc[0]);
+        calc.shift(calc[1]);
+        calc.shift(calc[2]);
+
+        // ADDS result to FRONT of "calc" array
+        calc.unshift(operations[operator](num1, num2));
+
+        // status = "ready";
+    }
+    //--------------------------------------------------------------
+
+    if (calc.length == 3) {
+
+        // FINAL TOTAL
+        total.push((operations[calc[1]](calc[0], calc[2])));
+    }
+
+
+    else if (calc.length > 3) {
+
+        while (calc.length > 1) {
+
+            // if (status == "ready") {
+
+                // PASSES two numbers & operator to be computed
+                compute(calc[0], calc[1], calc[2]);
+            // }
+        }
+    }
+
+    // FINAL TOTAL
+    total.push(calc);
+
+    // TOP-DISPLAY FUNCTIONALITY -----------------------------
+
+    var totalNode = document.createTextNode(total[0]);
+    var totalNode2 = document.createTextNode(total[0]);
+
+    // clears top-display
+    document.getElementById('topSpan').innerHTML = '';
+    // adds total to top-display
+    document.getElementById('topSpan').appendChild(totalNode);
+
+    //-----------------------------------------------------------
+
+    // BOTTOM-DISPLAY FUNCTIONALITY -----------------------------
+
+    // adds equals symbol & total to bottom-display
+    document.getElementById('bottomSpan').appendChild(textNode);
+    document.getElementById('bottomSpan').appendChild(totalNode2);
+
+    //-----------------------------------------------------------
+
+    console.log(empty);
+    empty = [];
+    console.log(empty);
+    empty.push(total[0]);
+    console.log(empty);
+    console.log(calc);
+    calc = [];
+    console.log(calc);
+
+
+}); // END OF 'CLICK' FUNCTIONALITY
+
+
+
+
+//-------------------------------------------------------------------------
+
+
+
+
 
 
 var chain = 2 + 2 + 5 - 2 * 3 - 3 / 3;

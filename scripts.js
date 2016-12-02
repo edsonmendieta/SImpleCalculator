@@ -14,7 +14,7 @@ var calc = [];
 //REFERENCE VARIABLES -----------------------------------------------
 
 // includes divide symbol after 'TOP Numbers' code.
-var ops = ["+", "-", "*"];
+var ops = ["+", "-", "x"];
 
 var dot = '.';
 
@@ -31,8 +31,6 @@ ops.push(theNode);
 // var textnode = document.createTextNode(theNode);
 //
 // document.getElementById('topSpan').appendChild(textnode);4
-
-console.log(document.getElementById('divideAmp').innerHTML);
 
 //------------------------------------------------------------
 
@@ -167,13 +165,20 @@ for (var r = 0; r < opButtons.length; r++) {
 
         //WHEN BUTTON IS CLICKED...
 
+        //variables ------------------------------------------
+
+        var textNode = document.createTextNode(this.innerHTML);
+
+        var textNode2 = document.createTextNode(this.innerHTML);
+        //-----------------------------------------------------
+
         // checks for valid number in 'empty' array
         if (empty.length > 1 || empty.length == 1 && empty[0] !== dot) {
 
             // pushes number currently in top-display to 'calc' array
             calc.push(Number(empty.join('')));
 
-            // pushes op symbol to 'calc' array
+            // pushes correct OP symbol to 'calc' array
             switch(this.innerHTML) {
 
                 case '+':
@@ -189,7 +194,25 @@ for (var r = 0; r < opButtons.length; r++) {
                     calc.push('divide');
             };
 
-            console.log(calc);
+            // TOP-DISPLAY FUNCTIONALITY -----------------------------
+
+            // adds OP to top-display
+
+            // clears top-display
+            document.getElementById('topSpan').innerHTML = '';
+            // adds OP to top-display
+            document.getElementById('topSpan').appendChild(textNode);
+
+            //-----------------------------------------------------------
+
+            // BOTTOM-DISPLAY FUNCTIONALITY -----------------------------
+
+            // adds OP to bottom-display
+            document.getElementById('bottomSpan').appendChild(textNode2);
+
+            //-----------------------------------------------------------
+
+            empty = [];
 
         } // END OF 'if "empty" is NOT empty' FUNCTIONALITY
 

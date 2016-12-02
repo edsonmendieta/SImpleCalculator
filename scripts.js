@@ -511,14 +511,16 @@ document.getElementById('CE').addEventListener('click', function() {
 
     // Checks for OP in top-display -------------------
 
-    for (var i = 0; i < ops.length; i++) {
+    if (top.innerHTML.length > 0) {
 
-        if (top.innerHTML[0] == ops[i]) {
+        for (var i = 0; i < ops.length; i++) {
 
-            opStatus = "yes";
+            if (top.innerHTML[0] == ops[i]) {
+
+                opStatus = "yes";
+            }
         }
     }
-
     //-------------------------------------------------
 
     if (bottom.innerHTML == 'Digit Limit Met') {
@@ -535,7 +537,7 @@ document.getElementById('CE').addEventListener('click', function() {
         calc = [];
     }
 
-    else if (empty.length > 0 || opStatus == "yes") {
+    else if (empty.length > 0 || opStatus == "yes" || (top.innerHTML.length === 0 && bottom.innerHTML.length > 0)) {
 
         if (top.innerHTML.length > 0) {
 
@@ -543,6 +545,12 @@ document.getElementById('CE').addEventListener('click', function() {
         }
 
         bottom.removeChild(bottom.childNodes[bottom.childNodes.length - 1]);
+
+        if (empty.length > 0) {
+
+            empty.pop();
+            console.log(empty);
+        }
     } // Last 'else if'
 
 }); // END of 'CLICK' functionality

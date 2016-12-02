@@ -543,12 +543,34 @@ document.getElementById('CE').addEventListener('click', function() {
         }
 
         bottom.removeChild(bottom.childNodes[bottom.childNodes.length - 1]);
-    }
+    } // Last 'else if'
 
 }); // END of 'CLICK' functionality
 
+//-----------------------------------------------------------------------
 
 
+                    // AC BUTTON
+
+document.getElementById('AC').addEventListener('click', function() {
+
+    // WHEN BUTTON IS CLICKED...
+
+    // variables -------------------------------
+
+    var top = document.getElementById('topSpan');
+
+    var bottom = document.getElementById('bottomSpan');
+
+    //------------------------------------------
+
+    top.innerHTML = '';
+    bottom.innerHTML = '';
+
+    empty = [];
+    calc = [];
+
+}); // END of 'CLICK' functionality
 
 
 

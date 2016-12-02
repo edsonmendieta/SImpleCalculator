@@ -1,5 +1,5 @@
 window.onload = function() {
-  //do work
+
 
 // GLOBAL ARRAYS ----------------------------------------------------
 
@@ -31,6 +31,9 @@ ops.push(theNode);
 // var textnode = document.createTextNode(theNode);
 //
 // document.getElementById('topSpan').appendChild(textnode);4
+
+console.log(document.getElementById('divideAmp').innerHTML);
+
 //------------------------------------------------------------
 
                      // NUMBERS 1 - 9
@@ -66,7 +69,7 @@ for (var i = 0; i < oneNine.length; i++) {
             }
         }
 
-        // CLEARS and ADDS # to top-display IF OP NOT in top-display
+        // CLEARS and ADDS # to top-display IF OP in top-display
         if (topOp == 'yes') {
             // clears top-display
             document.getElementById('topSpan').innerHTML = '';
@@ -93,12 +96,31 @@ for (var i = 0; i < oneNine.length; i++) {
 
 //-------------------------------------------------------------------------
 
-                    // '.' BUTTON
+                    // DOT BUTTON
 
-//ATTACHES EVENT LISTENER '.'
+//ATTACHES EVENT LISTENER DOT BUTTON
 document.getElementById('dot').addEventListener('click', function() {
 
     //WHEN BUTTON IS CLICKED...
+
+    //variables ------------------------------------------
+    var topOp = "no";
+
+    var textNode = document.createTextNode(this.innerHTML);
+
+    var textNode2 = document.createTextNode(this.innerHTML);
+    //-----------------------------------------------------
+
+    // TOP-DISPLAY FUNCTIONALITY---------------------------
+
+    // checks for op in top-display
+    for (var u = 0; u < ops.length; u++) {
+
+        if(ops[u] == document.getElementById('topSpan').innerHTML) {
+
+            topOp = "yes";
+        }
+    }
 
     // if dot NOT in 'empty' array...
     if (empty.join('').match(dotReg) === null) {
@@ -106,11 +128,75 @@ document.getElementById('dot').addEventListener('click', function() {
         // pushes dot to 'empty' array
         empty.push(dot);
 
-        //**************
-    }
+        // CLEARS and ADDS dot to top-display IF OP in top-display
+        if (topOp == 'yes') {
+            // clears top-display
+            document.getElementById('topSpan').innerHTML = '';
+            // adds dot to top-display
+            document.getElementById('topSpan').appendChild(textNode);
+        }
+
+        else {
+            // adds dot to top-display
+            document.getElementById('topSpan').appendChild(textNode);
+        }
+        //-------------------------------------------------------
+
+        // BOTTOM-DISPLAY FUNCTIONALITY -----------------------------
+
+        // adds # to bottom-display
+        document.getElementById('bottomSpan').appendChild(textNode2);
+
+        //-----------------------------------------------------------
+
+    } // ENDS "if dot NOT in 'empty' array" CONDITIONAL
 
 });
 //-------------------------------------------------------------------------
+
+
+                    // OPERATOR BUTTONS
+
+//ATTACHES EVENT LISTENER OP BUTTONS
+var opButtons = document.getElementsByClassName('operator');
+
+//ATTACHES EVENT LISTENER TO EACH NUMBER
+for (var r = 0; r < opButtons.length; r++) {
+
+    opButtons[r].addEventListener('click', function() {
+
+        //WHEN BUTTON IS CLICKED...
+
+        // checks for valid number in 'empty' array
+        if (empty.length > 1 || empty.length == 1 && empty[0] !== dot) {
+
+            // pushes number currently in top-display to 'calc' array
+            calc.push(Number(empty.join('')));
+
+            // pushes op symbol to 'calc' array
+            switch(this.innerHTML) {
+
+                case '+':
+                    calc.push('add');
+                    break;
+                case '-':
+                    calc.push('minus');
+                    break;
+                case 'x':
+                    calc.push('times');
+                    break;
+                case theNode:
+                    calc.push('divide');
+            };
+
+            console.log(calc);
+
+        } // END OF 'if "empty" is NOT empty' FUNCTIONALITY
+
+    }); // ENDS CLICK FUNCTIONALITY
+
+} // END OF EVENT LISTENER ATTACHING LOOP
+
 
 var chain = 2 + 2 + 5 - 2 * 3 - 3 / 3;
 

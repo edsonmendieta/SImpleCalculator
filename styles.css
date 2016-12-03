@@ -56,13 +56,13 @@ body {
     margin-top: 10px;
     height: 625px;
     width: 400px;
-    border: #d6bc28 3px solid; /* gold color */
+    border: #C8AD54 3px solid; /* gold color */
     border-radius: 100px;
 }
 
 #calcHeader {
     text-align: center;
-    color: #f7d309;
+    color: #C8AD54;
     font-weight: normal;
     font-size: 200%;
     padding-bottom: 30px;
@@ -74,7 +74,7 @@ body {
     border-radius: 50px;
     /*border: white 1px solid;*/
     margin: 0 auto; /* centers it. */
-    background-color: #f7d309;
+    background-color: #C8AD54;
 }
 
 .input {
@@ -119,16 +119,16 @@ button:focus {
     /*margin-left: 10px;*/
     height: 75px;
     width: 75px;
-    color: #f7d309;
+    color: #C8AD54;
     border-radius: 50px;
     background: none;
-    border: solid 2.5px #f7d309;
+    border: solid 2.5px #C8AD54;
     font-size: 200%;
 }
 
 .circle:hover {
     color: #1e1e1d;
-    background-color: #f7d309;
+    background-color: #C8AD54;
     cursor: pointer;
 }
 

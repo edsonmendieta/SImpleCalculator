@@ -355,10 +355,14 @@ document.getElementById('equals').addEventListener('click', function() {
 
     // BUTTON IS CLICKED...
 
-
+        // variables --------------------------------------------------
         var bottomP = document.getElementById('bottomSpan').innerHTML;
 
         var opStatus = "no";
+
+        //-------------------------------------------------------------
+
+
 
         //checking if 'bottomP' ends with an operator ------------
         for (var t = 0; t < ops.length; t++) {
@@ -433,7 +437,7 @@ document.getElementById('equals').addEventListener('click', function() {
             if (calc.length == 3) {
 
                 // FINAL TOTAL
-                total.push((operations[calc[1]](calc[0], calc[2])));
+                total.push((operations[calc[1]](calc[0], calc[2])).toFixed(2));
             }
 
 
@@ -450,7 +454,7 @@ document.getElementById('equals').addEventListener('click', function() {
             }
 
             // FINAL TOTAL
-            total.push(calc);
+            total.push(calc[0].toFixed(2));
 
             // TOP-DISPLAY FUNCTIONALITY -----------------------------
 
@@ -471,6 +475,19 @@ document.getElementById('equals').addEventListener('click', function() {
             document.getElementById('bottomSpan').appendChild(totalNode2);
 
             //-----------------------------------------------------------
+
+            // DIGIT LIMIT --------------------------------------
+            if (document.getElementById('topSpan').innerHTML.length >= 10 || document.getElementById('bottomSpan').innerHTML.length >= 28) {
+
+                document.getElementById('topSpan').innerHTML = '';
+
+                document.getElementById('bottomSpan').innerHTML = 'Digit Limit Met';
+
+                empty = [];
+                calc = [];
+
+            }
+            //---------------------------------------------------
 
             console.log(empty);
             empty = [];

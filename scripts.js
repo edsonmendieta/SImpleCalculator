@@ -438,6 +438,15 @@ document.getElementById('equals').addEventListener('click', function() {
 
                 // FINAL TOTAL
                 total.push((operations[calc[1]](calc[0], calc[2])).toFixed(2));
+
+                var decZeros = /\.00/;
+
+                if (String(total[0]).match(decZeros)) {
+
+                    total = [];
+                    total.push((operations[calc[1]](calc[0], calc[2])));
+
+                }
             }
 
 
@@ -451,10 +460,31 @@ document.getElementById('equals').addEventListener('click', function() {
                         compute(calc[0], calc[1], calc[2]);
                     // }
                 }
+
+                console.log(calc[0]);
+                // FINAL TOTAL
+                if (String(calc[0]).match(dotReg)) {
+
+                    total.push(calc[0].toFixed(2));
+                }
+
+                else {
+
+                    total.push(calc[0]);
+                }
             }
 
             // FINAL TOTAL
-            total.push(calc[0].toFixed(2));
+            // if (String(calc[0]).match('.')) {
+            //
+            //     total.push(calc[0].toFixed(2));
+            // }
+            //
+            // else {
+            //
+            //     total.push(calc[0]);
+            // }
+
 
             // TOP-DISPLAY FUNCTIONALITY -----------------------------
 
@@ -489,14 +519,14 @@ document.getElementById('equals').addEventListener('click', function() {
             }
             //---------------------------------------------------
 
-            console.log(empty);
+            // console.log(empty);
             empty = [];
-            console.log(empty);
+            // console.log(empty);
             empty.push(total[0]);
-            console.log(empty);
-            console.log(calc);
+            // console.log(empty);
+            // console.log(calc);
             calc = [];
-            console.log(calc);
+            // console.log(calc);
 
         }
 

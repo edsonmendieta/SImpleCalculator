@@ -1,3 +1,12 @@
+/******************************************\
+                $Fonts
+\******************************************/
+
+@import url('https://fonts.googleapis.com/css?family=Bungee');
+
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+@import url('https://fonts.googleapis.com/css?family=Galada');
 
 
 /******************************************\
@@ -53,7 +62,7 @@ body {
 
 #outer {
     margin: 0 auto; /* centers it. */
-    margin-top: 10px;
+    margin-top: 50px;
     height: 625px;
     width: 400px;
     border: #C8AD54 3px solid; /* gold color */
@@ -63,6 +72,7 @@ body {
 #calcHeader {
     text-align: center;
     color: #C8AD54;
+    font-family: 'Galada', cursive;
     font-weight: normal;
     font-size: 200%;
     padding-bottom: 30px;
@@ -93,7 +103,6 @@ body {
 #bottomP {
     font-size: 115%;
     border-radius: 0 0 50px 50px;
-    height: 25px;
 }
 
 .numSpan {
@@ -123,6 +132,7 @@ button:focus {
     border-radius: 50px;
     background: none;
     border: solid 2.5px #C8AD54;
+    font-family: 'Bungee';
     font-size: 200%;
 }
 
@@ -144,3 +154,19 @@ button:focus {
     width: 200px;
     margin-left: 10px;
 }
+
+/***FOOTER******/
+
+footer {
+    width: 100%;
+}
+
+#attribution {
+    text-align: center;
+    margin-top: 100px;
+    color: #C8AD54;
+    font-family: 'Galada';
+    font-size: 125%;
+}
+
+/***************/

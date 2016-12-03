@@ -84,7 +84,7 @@ body {
     border-radius: 50px;
     /*border: white 1px solid;*/
     margin: 0 auto; /* centers it. */
-    background-color: #C8AD54;
+    background-color: gold;
 }
 
 .input {
@@ -164,9 +164,29 @@ footer {
 #attribution {
     text-align: center;
     margin-top: 100px;
-    color: #C8AD54;
+    color: gold;
     font-family: 'Galada';
     font-size: 125%;
+}
+
+.iconContainer {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+}
+
+.twitterAnchor {
+    margin-right: 50px;
+}
+
+.twitter {
+    font-size: 300%;
+    color: #C8AD54;
+}
+
+.github {
+    font-size: 300%;
+    color: #C8AD54;
 }
 
 /***************/
